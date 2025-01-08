@@ -3,4 +3,4 @@
 def main():
     pass
 
-print("hi")
+print("hello")
