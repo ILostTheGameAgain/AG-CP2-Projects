@@ -1,6 +1,15 @@
 #alec george financial calculator
 
-def main():
-    pass
+#function to calculate how long it will take to save for a goal based on a weekly or montlhly deposit
 
-print("hello")
+#function to calculate compound interest
+def compound_interest(start, rate, time):
+    pass
+#function to calculate budget
+
+#function to calculate discounts to prices
+
+#function to calculate tips
+
+
+#main function
