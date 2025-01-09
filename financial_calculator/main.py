@@ -13,3 +13,8 @@ def compound_interest(start, rate, time):
 
 
 #main function
+def main():
+    pass
+
+
+print("this is a test")
