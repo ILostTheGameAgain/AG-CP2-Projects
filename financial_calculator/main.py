@@ -22,7 +22,9 @@ def compound_interest(start, percent, compound_rate, time):
 
 #main function
 def main():
-    while True:
-        print(f"${compound_interest(float(input(" start amount:")),float(input(" interest percent")),0,10)}")
-main()
+    print(f"${compound_interest(round(float(input(" start amount: ")), 2),float(input(" annual interest amount (typed as a decimal, example: 1 = 100%, 0.1 = 10%): ")),float(input(" compound rate (yearly is 1, monthly is 12, daily is 365, continuous is 0): ")), float(input(" time (years): ")))}")
 
+
+#while loop to continuously run main function and stupid proof it
+while True:
+    main()
