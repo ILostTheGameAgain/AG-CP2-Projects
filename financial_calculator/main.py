@@ -25,7 +25,7 @@ def compound_interest(start, percent, compound_rate, time):
 def budget(items, total):
     return_string = ""
     for i in range(len(items[0])):
-        return_string += f"{items[0][i]}: ${items[1][i]/total:.2f}\n"
+        return_string += f"{items[0][i]}: ${items[1][i]*100/total:.2f}\n"
 
     return return_string
 
@@ -43,21 +43,25 @@ def list_items():
             print(f" {100-total_percent}% of your budget is left\n")
 
         if total_percent > 100:
-            print("greater than 100\n")
+            total_percent -= percent_list[-1]
+            percent_list[-1] = 100-total_percent
+            return [item_list, percent_list]
+            
+            
         else:
             return [item_list, percent_list]
 
 
 #function to calculate discounts to prices
 def discount(price, discount):
-    new_price = price - round(price/discount, 2)
+    new_price = price - round((discount/100)*price, 2)
     return f"{new_price :.2f}"
 
 
 #function to calculate tips
-def tip(price, tip):
-    new_price = price + round(price/tip, 2)
-    return f"{new_price:.2f}"
+def tip(price, tip, people):
+    tip_price = round(((tip/100)*price)/people, 2)
+    return f"{tip_price:.2f}"
 
 
 #main function
@@ -71,7 +75,7 @@ def main(user_choice):
     elif user_choice == 4:
         return discount(round(float(input(" original price: ")), 2), float(input(" discount percent: ")))
     elif user_choice == 5:
-        return tip(round(float(input(" original price: ")), 2), float(input(" tip percent: ")))
+        return f"everyone pays ${tip(round(float(input(" original price: ")), 2), float(input(" tip percent: ")), int(input(" amount of people: ")))}"
     else:
         return "invalid input"
 
