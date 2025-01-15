@@ -1,28 +1,35 @@
-#alec george personal library
+#Alec George Personal Library
 
-#will allow you to add and remove things from a list, search for items, and exit the program
+#will be a list of books, user can add, remove, view, and search for items, and exit the program
 
-#variables, needs a list for books and a set for authors
+#list for books and authors
 books = []
 authors = []
 
-#function to add items
+
+#function to view the list
+def view(book_list, author_list):
+    printed_list = "Books:\n"
+    for i in range(len(book_list)):
+        printed_list += f" {book_list[i]} by {author_list[i]}\n"
+        return printed_list
 
 
+#function to add books
+def add(book_list, author_list, new_book, new_author):
+    book_list.append(new_book)
+    
+    
 
-#function to remove items
+#function to remove books
 
 
-
-#function to search items
-
+#function to search for books or authors
 
 
-#main function to run everything
+#main function
 def main():
-    pass
+    view(books, authors)
 
-
-#run the main function until program ends and stupid proof
-while True:
-    main()
+#while loop to stupid proof and repeat main function
+main()
