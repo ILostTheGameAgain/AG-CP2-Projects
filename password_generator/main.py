@@ -91,7 +91,7 @@ def main():
             if special_characters < 0: #more stupid proof
                 print("\ninvalid input\n")
                 continue
-            length = int(input(f"length of password (must be at least {uppercase_letters+lowercase_letters+numbers+special_characters}, any larger will add random characters):"))
+            length = int(input(f"length of password (must be at least {uppercase_letters+lowercase_letters+numbers+special_characters}, any larger will add random characters): "))
             if length < uppercase_letters+lowercase_letters+numbers+special_characters: #more stupid proof
                 print("\ninvalid input\n")
                 continue
@@ -115,6 +115,13 @@ def main():
         print(f"{assemble_password(assemble_requirements(uppercase_letters, lowercase_letters, numbers, special_characters, length))}\n") #print the finished password
     
     
-    
+
 
 main()
+while True:
+    if input("\n\n\ngenerate more? (y/n): ") == "y":
+        main()
+    else:
+        break
+
+print("\nthanks for generating passwords.")
