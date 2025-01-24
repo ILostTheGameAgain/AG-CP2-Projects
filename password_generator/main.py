@@ -83,7 +83,7 @@ def main():
             if lowercase_letters < 0: #more stupid proof
                 print("\ninvalid input\n")
                 continue
-            numbers = int(input("minimum number of uppercase numbers: "))
+            numbers = int(input("minimum number of numbers: "))
             if numbers < 0: #more stupid proof
                 print("\ninvalid input\n")
                 continue
