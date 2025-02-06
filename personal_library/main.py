@@ -7,14 +7,21 @@
 def view_books(book_list):
     printed_list = "\nBooks:\n"
     for i in book_list:
-        printed_list += f" {i}\n"
+        printed_list += f" {i["cover_type"]} {i["title"]} by {i["author"]} with {i["page count"]} pages"
     return printed_list
 
 
 
 #function to add books
-def add_book(book_list, new_book, new_author, new_pages, ):
-    book_list.add(f"{new_book} by {new_author}")
+def add_book(book_list, new_title, new_author, new_pages, new_cover):
+    book_list.append({
+        "title": new_title,
+        "author": new_author,
+        "page count": new_pages,
+        "cover_type": new_cover
+
+    })
+    book_list.sort()
     return book_list
     
     
@@ -44,7 +51,7 @@ def search_book(book_list, searched_item):
 #main function
 def main():
     #list for books and authors with some stuff already in it
-    books = set({})
+    books = []
     #while loop to continuously run other functions
     while True:
         #take user input for what to do, and stupid proof
@@ -56,27 +63,30 @@ def main():
  4 to search for a book
  5 to end the program
 your answer here: """))
+            
+            
+            if action == 1: #if action is 1, view the list
+                print(view_books(books))
+            
+            elif action == 2: #if action is 2, add a book and its author
+                books = add_book(books, input("\nwhat book would you like to add? ").strip().lower().capitalize(), input("what is the book's author? ").strip().lower().capitalize(), int(input("how many pages does it have? ")), input("Is it hardcover or paperback? ").strip().lower())
+
+            elif action == 3: #if action is 3, remove a book and its author
+                books = remove_book(books, input(" what are you removing? "))
+
+            elif action == 4: #if action is 4, search for books and authors
+                print(search_book(books, input("\nwhat are you searching for? ").strip().lower()))
+            
+            elif action == 5:
+                break
+
+            else: #anything else is an invalid input
+                print("\ninvalid input")
+
+
         except ValueError:
             print("\ninvalid input")
             continue
-        
-        if action == 1: #if action is 1, view the list
-            print(view_books(books))
-        
-        elif action == 2: #if action is 2, add a book and its author
-            books = add_book(books, input("\nwhat book would you like to add? ").strip().lower().capitalize(), input("what is the book's author? ").strip().lower().capitalize())
-
-        elif action == 3: #if action is 3, remove a book and its author
-            books = remove_book(books, input(" what are you removing? "))
-
-        elif action == 4: #if action is 4, search for books and authors
-            print(search_book(books, input("\nwhat are you searching for? ").strip().lower()))
-        
-        elif action == 5:
-            break
-
-        else: #anything else is an invalid input
-            print("\ninvalid input")
 
 #run main function
 main()
