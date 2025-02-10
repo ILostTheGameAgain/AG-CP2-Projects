@@ -1,7 +1,7 @@
 #Alec George Personal Library
 
 #will be a list of books, user can add, remove, view, and search for items, and exit the program
-
+import random
 
 #function to view the list
 def view_books(book_list):
@@ -87,14 +87,49 @@ def search_book(book_list, searched_item):
     searched_list = f"\nbooks with {searched_item} in title:"
     for i in book_list:
         if searched_item.strip().lower() in i["title"].strip().lower():
-            searched_list += f"\n {i["cover_type"]} {i["title"]} by {i["author"]} with {i["page count"]} pages"
+            searched_list += f"\n {i["cover type"]} {i["title"]} by {i["author"]} with {i["page count"]} pages"
 
     #search authors
     searched_list += f"\n\nbooks with {searched_item} in author:"
     for i in book_list:
         if searched_item.strip().lower() in i["author"].strip().lower():
-            searched_list += f"\n {i["cover_type"]} {i["title"]} by {i["author"]} with {i["page count"]} pages"
+            searched_list += f"\n {i["cover type"]} {i["title"]} by {i["author"]} with {i["page count"]} pages"
     return searched_list
+
+
+
+#function to generate random books
+def random_books(book_list):
+    number = 0
+    letters = "qwertyuiopasdfghjklzxcvbnm "
+    for i in range(random.randint(1,20)):
+        new_title = ""
+        for i in range(random.randint(4,10)):
+            new_title += letters[random.randint(0,26)]
+
+        new_author = ""
+        for i in range(random.randint(4, 10)):
+            new_author += letters[random.randint(0,26)]
+
+        new_page_count = random.randint(100,1000)
+
+        if random.randint(1,2) == 1:
+            new_cover_type = "paperback"
+
+        else:
+            new_cover_type = "hardcover"
+
+        
+        book_list.append({
+            "title": new_title.strip().lower(),
+            "author": new_author.strip().lower(),
+            "page count": new_page_count,
+            "cover type": new_cover_type
+        })
+        number += 1
+
+    print(f"\n generated {number} new books")
+    return(book_list)
 
 
 
@@ -112,7 +147,8 @@ def main():
  2 to add a book
  3 to remove a book
  4 to search for a book
- 5 to end the program
+ 5 to generate random books
+ 6 to end the program
 your answer here: """))
             
             
@@ -128,7 +164,10 @@ your answer here: """))
             elif action == 4: #if action is 4, search for books and authors
                 print(search_book(books, input("\nwhat are you searching for? ").strip().lower()))
             
-            elif action == 5:
+            elif action == 5: #if action is 5, generate random books
+                books = random_books(books)
+
+            elif action == 6:
                 break
 
             else: #anything else is an invalid input
