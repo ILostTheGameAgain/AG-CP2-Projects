@@ -5,9 +5,9 @@
 
 #function to view the list
 def view_books(book_list):
-    printed_list = "\nBooks:\n"
+    printed_list = "\nBooks:"
     for i in book_list:
-        printed_list += f" {i["cover_type"]} {i["title"]} by {i["author"]} with {i["page count"]} pages"
+        printed_list += f"\n {i["cover type"]} {i["title"]} by {i["author"]} with {i["page count"]} pages"
     return printed_list
 
 
@@ -18,31 +18,82 @@ def add_book(book_list, new_title, new_author, new_pages, new_cover):
         "title": new_title,
         "author": new_author,
         "page count": new_pages,
-        "cover_type": new_cover
+        "cover type": new_cover
 
     })
-    book_list.sort()
     return book_list
     
     
 
 #function to remove books
-def remove_book(book_list, removed_item):
-    for i in book_list:
-        if removed_item.strip().lower() in i.strip().lower():
-            book_list.remove(i)
-            return book_list
+def remove_book(book_list, removed_item, remove_type):
+    #choose what you're seaching for to remove
+    if remove_type == "1":
+        removed_item_count = 0
+        for i in book_list:
+            if removed_item.strip().lower() in i["title"].strip().lower():
+                print(f"\n removed {i["cover type"]} {i["title"]} by {i["author"]} with {i["page count"]} pages")
+                book_list.remove(i)
+                removed_item_count += 1
+
+        if removed_item_count == 0:
+            print(f"\n there are no items with {removed_item} in the title")
+
+    elif remove_type == "2":
+        removed_item_count = 0
+        for i in book_list:
+            if removed_item.strip().lower() in i["author"].strip().lower():
+                print(f"\n removed {i["cover type"]} {i["title"]} by {i["author"]} with {i["page count"]} pages")
+                book_list.remove(i)
+                removed_item_count += 1
+
+        if removed_item_count == 0:
+            print(f"\n there are no items with {removed_item} in the author's name")
+
+    elif remove_type == "3":
+        removed_item_count = 0
+        for i in book_list:
+            if removed_item.strip().lower() in str(i["page count"]).strip().lower():
+                print(f"\n removed {i["cover type"]} {i["title"]} by {i["author"]} with {i["page count"]} pages")
+                book_list.remove(i)
+                removed_item_count += 1
+
+        if removed_item_count == 0:
+            print(f"\n there are no items with {removed_item} in the page number")
+
+    elif remove_type == "4":
+        removed_item_count = 0
+        for i in book_list:
+            if removed_item.strip().lower() in str(i["cover type"]).strip().lower():
+                print(f"\n removed {i["cover type"]} {i["title"]} by {i["author"]} with {i["page count"]} pages")
+                book_list.remove(i)
+                removed_item_count += 1
+
+        if removed_item_count == 0:
+            print(f"\n there are no items with {removed_item} in the cover type")
+
+    else: #stupid proof
+        print("\n invalid input")
+
+    return book_list
         
-    print(f"\n there are no books with {removed_item} in the title or author")
+
 
 
 
 #function to search for books or authors
 def search_book(book_list, searched_item):
-    searched_list = f"\nbooks with {searched_item} in title or author:"
+    #search titles
+    searched_list = f"\nbooks with {searched_item} in title:"
     for i in book_list:
-        if searched_item in i.strip().lower():
-            searched_list += f"\n {i}"
+        if searched_item.strip().lower() in i["title"].strip().lower():
+            searched_list += f"\n {i["cover_type"]} {i["title"]} by {i["author"]} with {i["page count"]} pages"
+
+    #search authors
+    searched_list += f"\n\nbooks with {searched_item} in author:"
+    for i in book_list:
+        if searched_item.strip().lower() in i["author"].strip().lower():
+            searched_list += f"\n {i["cover_type"]} {i["title"]} by {i["author"]} with {i["page count"]} pages"
     return searched_list
 
 
@@ -72,7 +123,7 @@ your answer here: """))
                 books = add_book(books, input("\nwhat book would you like to add? ").strip().lower().capitalize(), input("what is the book's author? ").strip().lower().capitalize(), int(input("how many pages does it have? ")), input("Is it hardcover or paperback? ").strip().lower())
 
             elif action == 3: #if action is 3, remove a book and its author
-                books = remove_book(books, input(" what are you removing? "))
+                books = remove_book(books, input(" what are you removing? "), input(" type:\n  1 to search by title\n  2 to search by author\n  3 to search by page count\n  4 to search by cover type\n your answer here: "))
 
             elif action == 4: #if action is 4, search for books and authors
                 print(search_book(books, input("\nwhat are you searching for? ").strip().lower()))
