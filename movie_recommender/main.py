@@ -55,24 +55,47 @@ def main():
         #go through every item and set it to a dictionary
         for row in csv_reader:
             movie_list.append({
-                "title": row[0], #set first item to the title
-                "director": row[1], #set second item to the director
-                "genre": row[2], #set third item to the genre
-                "rating": row[3], #set fourth item to the rating
-                "length": row[4], #set fifth item to the length of the movie
-                "actors": row[5].split(", ") #set the sixth item to a list of notable actors
+                "title": row[0],
+                "director": row[1],
+                "genre": row[2],
+                "rating": row[3],
+                "length": row[4],
+                "actors": row[5].split(", ")
             })
     
+    #loop the whole thing
+    while True:
+        #user input to decide what to do
+        choice = input("""\nWhat would you like to do? Type:
+    1 view the whole list
+    2 to get recommendations based on genre and rating
+    3 to exit the program
+    Your answer here: """)
 
-    searched_list = search(movie_list, input("\n\nWhat genre are you searching for? (leave blank if this does not matter) ").strip().lower(), input("What rating are you searching for? (G, PG, PG-13, or R, leave blank if this does not matter) ").strip().upper())
+        if choice == "1": #if choice is 1, print the whole list
+            searched_list = search(movie_list, "", "")
 
-    for i in searched_list:
-        print(i)
+            for i in searched_list:
+                print(i)
+
+        elif choice == "2": #if choice is 2, print recommendations based on genre and rating
+            searched_list = search(movie_list, input("\n\nWhat genre are you searching for? (leave blank if this does not matter) ").strip().lower(), input("What rating are you searching for? (G, PG, PG-13, or R, leave blank if this does not matter) ").strip().upper())
+
+            for i in searched_list:
+                print(i)
+
+        elif choice == "3": #if choice is 3, exit the program
+            break
+
+        else: #stupid proof
+            print("\ninvalid input")
 
     
 
 
     
+#run main function
+main()
 
-while True:
-    main()
+#display a message to show that the program ended
+print("\nfdoahvjsaofadhbvcoiadhfdfwlfhbvhsgflkafhagILOSTTHEGAMEfdoiabvaodgfafucoiajhagdocachgoafg\niaofhgdaouydagcfoadfyguycofacujhfcuygfoadfILOSTTHEGAMEfoiuhvobiuygfaohvoaiudfvlchzvoufd")
