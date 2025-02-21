@@ -1,6 +1,4 @@
 #Alec George, writing to text notes
-
-
 import csv
 
 
@@ -13,10 +11,11 @@ x = create a file
 a+ = append and read
 """
 
-#with open("notes/test.txt", "w") as file:
-#    file.write("it's clear now")
+with open("notes/test.txt", "w") as f:
+    f.write("Created using write mode.")
 
-
+with open("notes/test.txt", "r") as file:
+    print(file.read())
 data = [
     {"username": "isougfgijngvksuhgvp", "color": "beige"},
     {"username": "fdoiuhfnbvoafbh", "color": "dark beige"},
@@ -49,7 +48,7 @@ with open("notes/user_info.csv", "w", newline="") as file:
 
 
 
-with open("notes/user_info.csv","r") as file:
-    csv_reader = csv.reader(file)
-    for row in csv_reader:
-        print(f"username: {row[0]}, color: {row[1]}")
+#with open("notes/user_info.csv","r") as file:
+#    csv_reader = csv.reader(file)
+#    for row in csv_reader:
+#        print(f"username: {row[0]}, color: {row[1]}")
