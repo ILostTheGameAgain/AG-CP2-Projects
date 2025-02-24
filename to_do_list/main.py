@@ -13,8 +13,14 @@ def add_item(item):
 
 
 #function to mark an item as complete
-def complete_item():
-    with open("to_do_list", "w+") as file:
+def complete_item(item):
+    with open("to_do_list/uncompleted_items.txt", "w+") as file:
+        if item not in file: #can't complete items not there
+            return f"\n{item} is not on the to do list"
+
+        else:
+            list_of_items = file.split("\n")
+            print(list_of_items)
 
 
 #function to remove items
