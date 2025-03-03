@@ -1,9 +1,9 @@
 # Alec George, Reading files python notes
 import csv
 
-#with open("notes/test.txt", "r") as file:
-#    content = file.read()
-#    print(content)
+with open("notes/test.txt", "r") as file:
+    content = file.read()
+    print(content)
 
 
 #print(content)
