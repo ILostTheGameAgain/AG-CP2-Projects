@@ -48,7 +48,7 @@ with open("notes/user_info.csv", "w", newline="") as file:
 
 
 
-#with open("notes/user_info.csv","r") as file:
-#    csv_reader = csv.reader(file)
-#    for row in csv_reader:
-#        print(f"username: {row[0]}, color: {row[1]}")
+with open("notes/user_info.csv","r") as file:
+    csv_reader = csv.reader(file)
+    for row in csv_reader:
+        print(f"username: {row[0]}, color: {row[1]}")

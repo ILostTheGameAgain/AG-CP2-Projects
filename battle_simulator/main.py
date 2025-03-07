@@ -6,6 +6,7 @@
 
 #import functions from other pages to run on main
 from guide import main as guide
+from profile_management import main as manage_profiles
 
 
 #main function, runs other functions
@@ -24,7 +25,7 @@ What would you like to do? Type:
             pass
 
         elif choice == "2":
-            pass
+            manage_profiles()
 
         elif choice == "3":
             guide()
