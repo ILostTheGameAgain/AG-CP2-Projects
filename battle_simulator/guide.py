@@ -20,7 +20,6 @@ Speed: increases chance of taking no damage
 def leveling_explain():
     print("""
 You gain levels when you beat someone else.
-The amount depends on the other profile's level.
 You can spend skill points on characters depending on their level.
 strength points increase strength by 2
 defense points increase defense by 1

@@ -8,6 +8,7 @@
 from small_functions import *
 from guide import main as guide
 from profile_management import main as manage_profiles
+from battling import main as battle
 
 
 #main function, runs other functions
@@ -24,7 +25,7 @@ What would you like to do? Type:
 Your answer here: """))
         #do things depending on what the user chose
         if choice == 1:
-            pass
+            battle()
 
         elif choice == 2:
             manage_profiles()
