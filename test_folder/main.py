@@ -1,20 +1,5 @@
-e = {
-    "e": 1,
-    "f": 2
-}
+import pandas as pd
 
-f = {
-    "e": 1,
-    "f": 2
-}
+df = pd.read_csv('test_folder/file.csv')
 
-g = [e,f]
-
-print(g)
-
-g.append({
-    "e": 2,
-    "f": 3
-})
-
-print(g)
+print(df.to_string())
