@@ -133,6 +133,9 @@ def main():
             cs()
             new_profile()
 
+            #save changes
+            save_profiles(profiles)
+
         #if user input is 2, edit a character
         elif user_input == 2:
             cs()
@@ -142,6 +145,9 @@ def main():
                 #edit profile with index of the one that matches the name\
                 edited_profile = profiles[is_in_list(name_profiles(profiles), editing_profile_name)-1]
                 profiles[is_in_list(name_profiles(profiles), editing_profile_name)-1] = edit_profile(edited_profile)
+
+            #save changes
+            save_profiles(profiles)
 
         #if user input is 3, display all profiles
         elif user_input == 3:
