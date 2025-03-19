@@ -5,6 +5,9 @@
 #needs csv things
 import csv
 
+#for graphing, needs matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
 
 #function to clear screen
 def cs():
@@ -71,3 +74,10 @@ def save_profiles(profiles):
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(profiles)
+
+
+#function to display a bar graph of values
+def graph(values, titles):
+    plt.bar(titles, values)
+
+    plt.show()

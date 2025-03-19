@@ -125,7 +125,7 @@ def main():
 
     #ask user for what they want to do repeatedly
     while True:
-        print("\nwhat would you like to do? Type:\n1 to make a new profile\n2 to edit a profile\n3 to view profiles\n4 to exit\nYour answer here:")
+        print("\nwhat would you like to do? Type:\n1 to make a new profile\n2 to edit a profile\n3 to view profiles\n4 to view a specific profile's stats\n5 to exit\nYour answer here:")
         user_input = is_int(input())
 
         #if user input is 1, create a new character
@@ -157,9 +157,19 @@ def main():
 
             print("\n")
 
-
-        #if user input is 4, add to the csv and exit profile management
+        #if user input is 4, allow the user to see a graph of a specific profile's stats
         elif user_input == 4:
+            editing_profile_name = input("\nwhat is the name of the profile you are viewing?\n")
+            if is_in_list(name_profiles(profiles), editing_profile_name):
+                #edit profile with index of the one that matches the name\
+                edited_profile = profiles[is_in_list(name_profiles(profiles), editing_profile_name)-1]
+                graph([edited_profile["strength"]//2, edited_profile["defense"], edited_profile["health"]//10, edited_profile["speed"], edited_profile["level"]], ["strength","defense","health","speed","level"])
+
+
+
+
+        #if user input is 5, add to the csv and exit profile management
+        elif user_input == 5:
             cs()
             #save list of profiles to csv
             save_profiles(profiles)

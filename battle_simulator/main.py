@@ -19,7 +19,7 @@ def main():
 Welcome to battle simulator!
 What would you like to do? Type:
 1 to battle someone else
-2 to manage/create a profile
+2 to manage/create/view profiles
 3 to learn what you're doing
 4 to exit
 Your answer here: """))
