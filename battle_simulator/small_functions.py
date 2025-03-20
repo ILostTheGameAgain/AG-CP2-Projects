@@ -2,10 +2,8 @@
 
 #page with some small quality of life functions
 
-#needs csv things
-import csv
-
-#for graphing, needs matplotlib
+#import libraries
+import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -55,25 +53,16 @@ def is_in_list(list, value):
 
 
 #function to put all profiles in a list
-def list_profiles():
+def load_profiles():
     #list of profiles, comes from folder
-    profiles = []
-    with open("battle_simulator/character_info.csv", "r") as file:
-        reader = csv.reader(file)
-        next(reader)
-        for profile in reader:
-            profiles.append({"name": profile[0], "strength": int(profile[1]), "defense": int(profile[2]), "health": int(profile[3]), "speed": int(profile[4]), "level": int(profile[5])})
-
-    return profiles
+    profiles = pd.read_csv('battle_simulator/character_info.csv')
+    return profiles.to_dict()
 
 
 #function to put profiles list into csv
 def save_profiles(profiles):
-    with open("battle_simulator/character_info.csv", "w", newline='') as file:
-        fieldnames = ["name", "strength", "defense", "health", "speed", "level"]
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(profiles)
+    profiles = pd.DataFrame(profiles)
+    profiles.to_csv('battle_simulator/character_info.csv', index=False)
 
 
 #function to display a bar graph of values

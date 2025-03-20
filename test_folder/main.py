@@ -1,26 +1,11 @@
 import pandas as pd
 
-df = pd.read_csv('test_folder/file.csv')
+df= pd.read_csv('test_folder/file.csv')
 
-print(df.to_string())
+print(df)
+dictionary_data = df.to_dict()
+print(dictionary_data)
+dictionary_data = pd.DataFrame(dictionary_data)
+print(dictionary_data)
 
-
-import matplotlib.pyplot as plt
-import numpy as np
-
-plt.style.use('_mpl-gallery')
-
-# make data
-y = [1,2,3,4,5,6]
-
-# plot
-fig, ax = plt.subplots()
-
-ax.stairs(y, linewidth=2.5)
-
-ax.set(xlim=(0, 6), xticks=np.arange(1, 6),
-       ylim=(0, 20), yticks=np.arange(1, 20))
-
-plt.show()
-
-print(np.arange(0,9))
+dictionary_data.to_csv('test_folder/file2.csv', index=False)

@@ -57,8 +57,12 @@ def count_points(strength, defense, health, speed):
 
 
 #function to format profiles to display
-def format_profile(profile):
-    return f"Level {profile["level"]} {profile["name"]} ({count_points(profile["strength"], profile["defense"], profile["health"], profile["speed"])} spent skill points)"
+def format_profiles(profiles):
+    formatted_list = "\n"
+    print(profiles['level'])
+    for i in range(len(profiles['name'])):
+        formatted_list += f"Level {profiles['level'][i-1]}"
+
 
 #function to make list of profile names
 def name_profiles(profiles):
@@ -74,19 +78,27 @@ def name_profiles(profiles):
 def main():
 
     #put profiles in a list
-    profiles = list_profiles()
+    profiles = load_profiles()
+    
 
 
     #function to add new profile
     def new_profile():
         #ask for information name and level, stats are assigned randomly based on level
-        name = is_unique(name_profiles(profiles), input("\nwhat is the name? "))
+#        name = is_unique(name_profiles(profiles), input("\nwhat is the name? "))
+        name = input("\nwhat is the name? ")
         level = is_int(input("\nwhat is the character's level? "))
         #randomly assign base stats
         strength, defense, health, speed = assign_stats(level)
 
         #add to the list of profiles
-        profiles.append({"name": name, "strength": strength, "defense": defense, "health": health, "speed": speed, "level": level})
+        profiles['name'][len(profiles['name'])] = name
+        profiles['strength'][len(profiles['strength'])] = strength
+        profiles['defense'][len(profiles['defense'])] = defense
+        profiles['health'][len(profiles['health'])] = health
+        profiles['speed'][len(profiles['speed'])] = speed
+        profiles['level'][len(profiles['level'])] = level
+        
 
 
     #function to edit a profile, increase skill points in specific categories if level is high enough
@@ -152,10 +164,7 @@ def main():
         #if user input is 3, display all profiles
         elif user_input == 3:
             cs()
-            for i in profiles:
-                print(format_profile(i))
-
-            print("\n")
+            print(format_profiles(profiles))
 
         #if user input is 4, allow the user to see a graph of a specific profile's stats
         elif user_input == 4:
