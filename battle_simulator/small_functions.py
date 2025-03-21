@@ -70,3 +70,5 @@ def graph(values, titles):
     plt.bar(titles, values)
 
     plt.show()
+
+

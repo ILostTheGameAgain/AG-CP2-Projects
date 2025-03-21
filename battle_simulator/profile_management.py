@@ -61,17 +61,9 @@ def format_profiles(profiles):
     formatted_list = "\n"
     print(profiles['level'])
     for i in range(len(profiles['name'])):
-        formatted_list += f"Level {profiles['level'][i-1]}"
+        formatted_list += f"{i+1}  Level {profiles['level'][i]} {profiles['name'][i]}\n"
 
-
-#function to make list of profile names
-def name_profiles(profiles):
-    names = []
-    for i in profiles:
-        #add every profile name to names
-        names.append(i["name"])
-
-    return names
+    return formatted_list
 
 
 #main function to manage profiles
@@ -168,11 +160,25 @@ def main():
 
         #if user input is 4, allow the user to see a graph of a specific profile's stats
         elif user_input == 4:
-            editing_profile_name = input("\nwhat is the name of the profile you are viewing?\n")
-            if is_in_list(name_profiles(profiles), editing_profile_name):
-                #edit profile with index of the one that matches the name\
-                edited_profile = profiles[is_in_list(name_profiles(profiles), editing_profile_name)-1]
-                graph([edited_profile["strength"]//2, edited_profile["defense"], edited_profile["health"]//10, edited_profile["speed"], edited_profile["level"]], ["strength","defense","health","speed","level"])
+            profile_name = input("\nwhat is the name of the profile you are viewing? (type nothing to go back)\n")
+            #check if the user input is blank to exit, and check to make sure the profile is in the list
+            if profile_name == "":
+                continue
+
+            if is_in_list(profiles['name'], profile_name):
+                pfp_index = is_in_list(profiles['name'], profile_name)
+                #display the data for the profile
+                print(f"""\n{profiles['name'][pfp_index-1]}'s stats:
+Strength: {profiles['strength'][pfp_index-1]} ({profiles['strength'][pfp_index-1]//2-1} points)
+Defense: {profiles['defense'][pfp_index-1]} ({profiles['defense'][pfp_index-1]-1} points)
+Health: {profiles['health'][pfp_index-1]} ({profiles['health'][pfp_index-1]//5-1} points)
+Speed: {profiles['speed'][pfp_index-1]} ({profiles['speed'][pfp_index-1]-1} points)
+Level: {profiles['level'][pfp_index-1]}
+Average stat""")
+
+            else:
+                print("\nthat is not a profile")
+            
 
 
 
