@@ -1,0 +1,38 @@
+name, value, type
+penny, 0.01, dollars
+nickel, 0.05, dollars
+dime, 0.1, dollars
+quarter, 0.25, dollars
+half dollar, 0.5, dollars
+1 dollar bill, 1, dollars
+2 dollar bill, 2, dollars
+5 dollar bill, 5, dollars
+20 dollar bill, 20, dollars
+50 dollar bill, 50, dollars
+100 dollar bill, 100, dollars
+1p coin, 0.01, pounds
+2p coin, 0.02, pounds
+5p coin, 0.05, pounds
+10p coin, 0.1, pounds
+20p coin, 0.2, pounds
+50p coin, 0.5, pounds
+1£ coin, 1, pounds
+2£ coin, 2, pounds
+5£ note, 5, pounds
+10£ note, 10, pounds
+20£ note, 20, pounds
+50£ note, 50, pounds
+1 cent coin, 0.01, euros
+2 cent coin, 0.02, euros
+5 cent coin, 0.05, euros
+10 cent coin, 0.1, euros
+20 cent coin, 0.2, euros
+50 cent coin, 0.5, euros
+1€ coin, 1, euros
+2€ coin, 2, euros
+5€ note, 5, euros
+10€ note, 10, euros
+20€ note, 20, euros
+50€ note, 50, euros
+100€ note, 100, euros
+200€ note, 200, euros
