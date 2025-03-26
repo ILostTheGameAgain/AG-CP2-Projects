@@ -77,7 +77,11 @@ def main():
     def new_profile():
         #ask for information name and level, stats are assigned randomly based on level
 #        name = is_unique(name_profiles(profiles), input("\nwhat is the name? "))
-        name = input("\nwhat is the name? ")
+        name = input("\nwhat is the name? (leave blank to be random) ")
+        if name == "":
+            name = rand_name()
+            print(f"\nname is {name}\n")
+
         level = is_int(input("\nwhat is the character's level? "))
         #randomly assign base stats
         strength, defense, health, speed = assign_stats(level)

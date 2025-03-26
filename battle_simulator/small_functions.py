@@ -6,6 +6,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from faker import Faker
 
 #function to clear screen
 def cs():
@@ -71,3 +72,8 @@ def graph(values, titles):
 
     plt.show()
 
+#function to generate a random name
+def rand_name():
+    fake = Faker()
+
+    return fake.name()
