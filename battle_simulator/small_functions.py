@@ -71,4 +71,3 @@ def graph(values, titles):
 
     plt.show()
 
-
