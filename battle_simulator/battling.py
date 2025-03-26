@@ -9,16 +9,31 @@ from small_functions import *
 import random
 
 #function to display profiles with a number
-def display_profiles(profiles):
-    profile_list = ""
-    for i, profile in enumerate(profiles):
-        profile_list += f"\n{i+1} - Level {profile["level"]} {profile["name"]}"
+def format_profiles(profiles):
+    formatted_list = "\n"
+    for i in range(len(profiles['name'])):
+        formatted_list += f"{i+1}  Level {profiles['level'][i]} {profiles['name'][i]}\n"
 
-    return profile_list
+    return formatted_list
         
+
+#assign stats for players
+def assign_stats(index, df):
+    stats = dict({})
+    stats['strength']=df['strength'][index]
+    stats['defense']=df['defense'][index]
+    stats['health']=df['health'][index]
+    stats['speed']=df['speed'][index]
+    return stats
+    
+
+        
+
 
 #function to handle combat turns
 def combat(p1, p2):
+    print(p1)
+    print(p2)
     commentary = "" #commentary string to explain what happens
     #randomly assign who goes first
     if random.randint(1,2) == 1:
@@ -55,7 +70,7 @@ def combat(p1, p2):
 
             #subtract damage from health
             p2["health"] -= damage
-            commentary += f" Player 2 is now at {p2["health"]} health."
+            commentary += f" Player 2 is now at {p2['health']} health."
 
 
         #if turn is 2, player two goes
@@ -82,16 +97,22 @@ def combat(p1, p2):
 
             #subtract damage from health
             p1["health"] -= damage
-            commentary += f" Player 1 is now at {p1["health"]} health."
+            commentary += f" Player 1 is now at {p1['health']} health."
 
         #switch turns
-        turn = (turn+1)%2
+        if turn == 1:
+            turn += 1
+
+        else:
+            turn -= 1
 
     #decide winner
     if p1["health"] < 0:
+        commentary += '\nPlayer 2 wins'
         return 2, commentary
     
     else:
+        commentary += '\nPlayer 1 wins'
         return 1, commentary
 
 
@@ -100,13 +121,13 @@ def combat(p1, p2):
 
 #function to select 2 profiles and return their stats
 def select_profiles(profiles):
-    print(f"\nprofiles:{display_profiles(profiles)}")
+    print(f"\nprofiles:{format_profiles(profiles)}")
     #select 2 profiles
 
-    index_1 = is_in_range(is_int(input("type the number of the profile "))-1, 0, len(profiles))-1
-    index_2 = is_in_range(is_int(input("type the number of the profile "))-1, 0, len(profiles))-1
-    profile_1 = profiles[index_1]
-    profile_2 = profiles[index_2]
+    index_1 = is_in_range(is_int(input("type the number of the profile ")), 0, len(profiles['name']))-1
+    index_2 = is_in_range(is_int(input("type the number of the profile ")), 0, len(profiles['name']))-1
+    profile_1 = assign_stats(index_1, profiles)
+    profile_2 = assign_stats(index_2, profiles)
 
 
     return profile_1, profile_2, index_1, index_2
@@ -116,9 +137,9 @@ def select_profiles(profiles):
 #function for battling, turn based, but automatic with commentary
 def main():
     #put profiles in a list
-    profiles = list_profiles()
+    profiles = load_profiles()
     #only work if there are more than 2 profiles
-    if len(profiles) < 2:
+    if len(profiles['name']) < 2:
         cs()
         print("\nnot enough profiles\n")
         return
@@ -133,10 +154,12 @@ def main():
     cs()
     #winner gets levels
     if winner == 1:
-        profiles[index_1]["level"] += 1
+        profiles['level'][index_1] += 1
 
     else:
-        profiles[index_2]["level"] += 1
+        profiles["level"][index_2] += 1
 
     #save profiles
     save_profiles(profiles)
+
+main()

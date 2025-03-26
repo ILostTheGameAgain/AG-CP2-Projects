@@ -202,3 +202,5 @@ Level: {profiles['level'][pfp_index-1]}
 
             break
     
+
+main()
