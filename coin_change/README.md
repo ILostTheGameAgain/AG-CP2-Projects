@@ -8,7 +8,7 @@ This project will ask for a country or type of currency (currently has us dollar
 ***
 First, input a country or type of money used. Then, input the amount. it will show results, and give the option to go again. To do so, input anything.
 
-![image](coin_change\Screenshot 2025-03-27 131810.png)  
+![image]('coin_change\Screenshot 2025-03-27 131810.png')  
 
 ## Used Technologies
 ***
