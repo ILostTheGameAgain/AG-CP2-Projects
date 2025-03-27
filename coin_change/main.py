@@ -83,11 +83,6 @@ def main():
             if repeats > 0:
                 coin_string += f'\n{repeats} {coins['name'][-(i+1)]}'
 
-
-        #add leftover for too small amounts
-        if amt > 0:
-            coin_string += f'\n\nleft over: {amt:.3f}'
-
         return coin_string
 
     #repeat until the user wants to stop
