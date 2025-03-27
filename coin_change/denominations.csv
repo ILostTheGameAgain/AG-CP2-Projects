@@ -7,6 +7,7 @@ half dollar,0.5,dollars,us
 $1 bill,1,dollars,us
 $2 bill,2,dollars,us
 $5 bill,5,dollars,us
+$10 bill,10,dollars,us
 $20 bill,20,dollars,us
 $50 bill,50,dollars,us
 $100 bill,100,dollars,us
