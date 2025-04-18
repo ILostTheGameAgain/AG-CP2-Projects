@@ -1,14 +1,21 @@
 import pandas as pd
 
-df= pd.read_csv('test_folder/file.csv')
+items = {
+    "name": ["1", "2", "3"],
+    "playlists": [['1','2','3'],['1','2','3'],['1','2','3']]
+}
 
-print(df)
-dictionary_data = df.to_dict()
-#print(dictionary_data)
-dictionary_data = pd.DataFrame(dictionary_data)
-#print(dictionary_data.describe())
-print(dictionary_data)
-dictionary_data.to_csv('test_folder/file2.csv', index=False)
+pd.DataFrame(items).to_csv("test_folder/file.csv")
 
-import pandas as pd  
-  
+playlists = {
+
+}
+
+
+for ind, val in enumerate(items['playlists']):
+    for x in val:
+        if x not in playlists.keys():
+            playlists[x] = []
+        playlists[x].append(items["name"][ind])
+
+print(playlists)
