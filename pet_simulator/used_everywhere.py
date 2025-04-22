@@ -4,10 +4,16 @@
 import random
 
 
+#functoin to momentarily pause
+def pause():
+    input("\npress enter to continue\n")
+
+#functoin to clear screen
 def cs():
     print('\033c')
 
 
+#functoin to test if an input is an integer
 def is_int(value):
     try:
         int(value)
@@ -16,6 +22,14 @@ def is_int(value):
         value = is_int(input("\nthat is not an integer. Try again:\n"))
 
     return int(value)
+
+
+#functoin to test if an input is longer than 0
+def is_long(value):
+    if len(value)  == 0:
+        value = is_long(input("\ninput must be at least 1 character. Try again:\n"))
+
+    return value
 
 
 class pet:
@@ -78,17 +92,19 @@ class pet:
             self.alive = 0
             return f"{self.name} became too depressed.\n{self.name} is now dead."
         
-        if self.tired >= 6:
+        if self.tired > 8:
             self.alive = 0
             return f"{self.name} was overworked.\n{self.name} is now dead."
         
-        if self.tired <= 4:
+        if self.tired < 0:
             self.alive = 0
             return f"{self.name} had too much energy.\n{self.name} is now dead."
         
         if self.sick >= 5:
             self.alive = 0
             return f"{self.name} got too sick.\n{self.name} is now dead."
+        
+        return ""
         
 
 
@@ -205,7 +221,7 @@ class pet:
     #functoin to let the pet sleep
     def sleep(self):
         #only sleep if the pet is tired enough
-        if self.tired <= 2:
+        if self.tired <= 3:
             returned_string = f"{self.name} is too energetic to sleep right now."
 
         else:
@@ -218,6 +234,13 @@ class pet:
                 returned_string += f"\n{self.name} recovered from the sickness."
                 self.sick = 0
 
-
         return returned_string
 
+    def specific_stats(self):
+        returned_string = f'''{self.name} the {self.species}:
+{self.hunger} hunger (> means more hungry)
+{self.happiness} happiness (> means happier)
+{self.tired} energy (> means more tired)
+{self.sick} days sick
+{self.age} days old'''
+        return returned_string
