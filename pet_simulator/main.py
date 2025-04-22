@@ -92,5 +92,13 @@ Type your answer here:
             print("\ninvalid input\n")
             pause()
 
+        #delete dead pets
+        dead_pets = []
+        for i in pets:
+            if pets[i].is_dead():
+                dead_pets.append(i)
+
+        for i in dead_pets:
+            pets.pop(i)
 
 main()

@@ -244,3 +244,11 @@ class pet:
 {self.sick} days sick
 {self.age} days old'''
         return returned_string
+    
+    def is_dead(self):
+        if self.alive == 0:
+            return True
+        
+        else:
+            return False
+
